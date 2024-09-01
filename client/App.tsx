@@ -61,7 +61,6 @@ const App: React.FC = () => {
     const monthNumber = parseInt(month)
     const dayNumber = parseInt(day)
 
-    // Add validation for month and day
     if (
       isNaN(monthNumber) ||
       isNaN(dayNumber) ||
@@ -77,6 +76,8 @@ const App: React.FC = () => {
     const zodiacSign = getZodiacSign(monthNumber, dayNumber)
     setSign(zodiacSign)
   }
+
+  const currentDate = new Date().toLocaleDateString()
 
   return (
     <div className="App">
@@ -117,7 +118,13 @@ const App: React.FC = () => {
       </form>
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">Error: {error}</p>}
-      <HoroscopeInfo horoscopeData={horoscopeData} />
+      {horoscopeData && (
+        <div className="horoscope-result">
+          <p>Date: {currentDate}</p>
+          <p>Mr/Ms {name},</p>
+          <HoroscopeInfo horoscopeData={horoscopeData} />
+        </div>
+      )}
     </div>
   )
 }

@@ -3,9 +3,7 @@ import { HoroscopeData } from '../../models/horoscope'
 
 export async function getHoroscope(sign: string): Promise<HoroscopeData> {
   try {
-    const response = await request
-      .get('https://horoscope-app-api.vercel.app/horoscope')
-      .query({ sign })
+    const response = await request.get('/api/v1/horoscope').query({ sign })
 
     if (response.status !== 200) {
       throw new Error(`API responded with status code ${response.status}`)

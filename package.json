@@ -8,7 +8,9 @@
   "author": "Dev Academy Aotearoa",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+   "dev": "run-p dev:client dev:server",
+    "dev:client": "vite",
+    "dev:server": "tsx watch server/index.ts",
     "build": "vite build",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
@@ -50,5 +52,8 @@
     "semi": false,
     "singleQuote": true
   },
-  "browserslist": "> 2%, not dead"
+  "browserslist": "> 2%, not dead",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
